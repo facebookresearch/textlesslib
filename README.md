@@ -19,6 +19,7 @@ Table of Contents
       * [Encoding speech](#encoding-speech)
       * [Dataset helpers](#dataset-helpers)
       * [Data preprocessing](#data-preprocessing)
+      * [Provided models](#provided-models)
    * [Testing](#testing)
 
 
@@ -117,6 +118,15 @@ can be used with a standard Pytorch dataloader in a scalable manner.
 ### Data preprocessing
 We also provide a [multi-GPU/multi-node preprocessing tool](tools/distributed_transcribe/)
 for the cases where on-the-fly processing of audio should be avoided.
+
+### Provided models
+We provide implementations and pre-trained checkpoints for the following models:
+
+* Dense representations: HuBERT-base (trained on LibriSpeech 960h) and CPC (trained on 6Kh subset of LibriLight);
+* Quantizers: k-means quantizers with vocabulary sizes of 50, 100, 200 for both the dense models (trained on LibriSpeech 960h);
+* Decoders: Tacotron2 models for all (dense model x quantizer) combinations (trained on LJSpeech).
+
+Finally, the pitch extraction is done via YAAPT.
 
 ## Testing
 We use pytest (`pip install pytest pytest-xdist `). Unit tests are located in the `test` directory:
