@@ -129,7 +129,7 @@ We provide implementations and pre-trained checkpoints for the following models:
 Finally, the pitch extraction is done via YAAPT.
 
 ## Testing
-We use pytest (`pip install pytest pytest-xdist `). Unit tests are located in the `test` directory:
+We use pytest (`pip install pytest pytest-xdist `). Our unit tests are located in the `tests` directory:
 ```bash
 cd tests && pytest -n 8
 ```
