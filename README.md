@@ -19,7 +19,7 @@ Table of Contents
       * [Encoding speech](#encoding-speech)
       * [Dataset helpers](#dataset-helpers)
       * [Data preprocessing](#data-preprocessing)
-      * [Provided models](#provided-models)
+   * [Provided models](#provided-models)
    * [Testing](#testing)
 
 
@@ -119,7 +119,7 @@ can be used with a standard Pytorch dataloader in a scalable manner.
 We also provide a [multi-GPU/multi-node preprocessing tool](tools/distributed_transcribe/)
 for the cases where on-the-fly processing of audio should be avoided.
 
-### Provided models
+## Provided models
 We provide implementations and pre-trained checkpoints for the following models:
 
 * Dense representations: HuBERT-base (trained on LibriSpeech 960h) and CPC (trained on 6Kh subset of LibriLight);
