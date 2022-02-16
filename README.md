@@ -8,7 +8,8 @@ language that are unaccessable for text-based approaches, e.g. prosody. To learn
 
 **textlesslib** is a library aimed to facilitate research in Textless NLP. The goal of the library is to speed up the research cycle and
 lower the learning curve for those who want to start. We provide highly configurable, off-the-shelf available tools to encode speech
-as sequences of discrete values and tools to decode such streams back into the audio domain.
+as sequences of discrete values and tools to decode such streams back into the audio domain. A high-level description of the library can also be
+found in our [[paper]](https://arxiv.org/abs/2202.07359).
 
 
 Table of Contents
@@ -21,6 +22,7 @@ Table of Contents
       * [Data preprocessing](#data-preprocessing)
    * [Provided models](#provided-models)
    * [Testing](#testing)
+   * [Citing textless-lib](#citing-textless-lib)
 
 
 ## Installation
@@ -132,6 +134,19 @@ Finally, the pitch extraction is done via YAAPT.
 We use pytest (`pip install pytest pytest-xdist `). Our unit tests are located in the `tests` directory:
 ```bash
 cd tests && pytest -n 8
+```
+
+## Citing textless-lib
+If you find textless-lib useful in your research, please consider citing our work:
+```
+@article{Kharitonov2022,
+      title={textless-lib: a Library for Textless Spoken Language Processing}, 
+      author={Eugene Kharitonov and Jade Copet and Kushal Lakhotia and Tu Anh Nguyen and Paden Tomasello and Ann Lee and Ali Elkahky and Wei-Ning Hsu and Abdelrahman Mohamed and Emmanuel Dupoux and Yossi Adi},
+      year={2022},
+      eprint={2202.07359},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 ```
 
 ## Licence
