@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Textless NLP is an active area of research that aims to extend NLP techniques to work directly on spoken language. By using self-supervisedly
+Textless NLP is an active area of research that aims to extend NLP techniques (and tools!) to work directly on spoken language. By using self-supervisedly
 learnt discrete speech representations, the area promises to unlock interesting NLP applications on languages without written form or on facets of spoken 
 language that are unaccessable for text-based approaches, e.g. prosody. To learn more, please check some of the [papers](https://speechbot.github.io/).
 
