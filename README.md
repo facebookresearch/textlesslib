@@ -9,7 +9,7 @@ language that are unaccessable for text-based approaches, e.g. prosody. To learn
 **textlesslib** is a library aimed to facilitate research in Textless NLP. The goal of the library is to speed up the research cycle and
 lower the learning curve for those who want to start. We provide highly configurable, off-the-shelf available tools to encode speech
 as sequences of discrete values and tools to decode such streams back into the audio domain. A high-level description of the library can also be
-found in our [[paper]](https://arxiv.org/abs/2202.07359).
+found in our paper [[arxiv]](https://arxiv.org/abs/2202.07359).
 
 
 Table of Contents
