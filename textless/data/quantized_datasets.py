@@ -8,7 +8,7 @@ A `textless` wrapper around datasets (Quantize dataset) and a set of pre-wrapped
 (https://pytorch.org/audio/stable/datasets.html).
 """
 
-from typing import Callable, Union, Optional
+from typing import Callable, Union, Optional, Any, Dict, List
 import pathlib
 import torch
 import logging
@@ -122,19 +122,23 @@ class QuantizeDataset:
         device: Optional[Union[str, torch.torch.device]] = None,
         speaker_extractor: Optional[Callable] = None,
     ):
-        """[summary]
+        """Wraps an arbitrary index-style PyTorch dataset and provides a "textless" quantized view of it.
+        It makes the following assumptions about `dataset[i]`:
+        * it returns a tuple where the first element is a raw waveform,
+        * all waveforms have the same sample rate as speech_encoder expects.
 
         Args:
-            dataset (Dataset): [description]
-            speech_encoder (Callable): [description]
-            device (Optional[Union[str, torch.torch.device]], optional): [description]. Defaults to None.
+            dataset (Dataset): Dataset to be wrapped
+            speech_encoder (Callable): SpeechEncoder to encode the audio
+            device (Optional[Union[str, torch.torch.device]], optional):
+                Sets a device to be used for encoding speech. If is set to None, torch.cuda.current_device() will be used.
                 When used in a dataloader with multiple workers, it might be useful to set `device` to "auto".
                 This way, on the first call of __getitem__(), the QuantizeDataset checks if it runs in a dataloader
                 worker. If this is the case, it will grab one of the available GPUs and place its copy of
-                SpeechEncoder there.
-                This could be useful as SpeechEncoder is typically GPU-intensive and it is a good idea to parallelize
-                across multiple GPUs.
-            speaker_extractor (Optional[Callable], optional): [description]. Defaults to None.
+                SpeechEncoder there. This could be useful as SpeechEncoder is typically GPU-intensive and it is a good idea to parallelize
+                across multiple GPUs. Defaults to None.
+            speaker_extractor (Optional[Callable], optional): An optional callable that extracts speaker id from the
+            dataset[i] output. Only needed if speech_encoder uses per-speaker F0 normalization. Defaults to None.
         """
 
         self.dataset = dataset
@@ -165,17 +169,7 @@ class QuantizeDataset:
             self.speech_encoder.eos.item(),
         )
 
-    def dump_meta(self, root):
-        import json
-
-        with open(pathlib.Path(root) / "meta.json", "w") as fout:
-            meta = dict(
-                (name, getattr(self, name).item())
-                for name in ["bos", "eos", "unit_pad", "unit_vocab_size"]
-            )
-            print(json.dumps(meta), file=fout)
-
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.dataset)
 
     def select_worker_gpu(self):
@@ -192,7 +186,17 @@ class QuantizeDataset:
             self.device = torch.cuda.current_device()
             self.speech_encoder.cuda()
 
-    def __getitem__(self, k):
+    def __getitem__(self, k: int) -> Dict[str, Union[torch.Tensor, Any]]:
+        """Returns "texless" representation of the k-th element of the wrapped dataset in
+        a form of aligned unit, durarion, and (optionally) F0 streams.
+        Args:
+            k (int): example index.
+        Returns:
+            Dict[str, Union[torch.Tensor, Any]]: A dict that has contains
+            speech_encoder(waveform) outputs and the remainder of what
+            the underlying dataset returned under the "rest" key.
+            All tensors are placed on CPU.
+        """
         waveform, *rest = self.dataset[k]
 
         if self.randomize_device_on_next_call and self.device is None:
@@ -209,7 +213,17 @@ class QuantizeDataset:
 
         return encoded
 
-    def collater(self, samples):
+    def collater(self, samples: List[Any]):
+        """Collater utility for using QuantizeDataset within a DataLoader.
+        Args:
+            samples (_type_): Samples to collate.
+
+        Returns:
+            Dict[str, Union[Any, torch.Tensor]: Per-stream collated samples.
+            The unit stream is padded with QuantizeDataset.unit_pad while other streams are padded
+            with zeros. The non-audio parts of the samples (i.e. those that are in
+            sample["rest"]) are not collated and are returned as-is under the "rest" key.
+        """
         units = collate_tensors([s["units"] for s in samples], pad=self.unit_pad)
         if "f0" in samples[0]:
             f0 = collate_tensors(
@@ -240,12 +254,3 @@ class QuantizeDataset:
         if f0 is not None:
             result["f0"] = (f0,)
         return result
-
-
-if __name__ == "__main__":
-    speech_encoder = SpeechEncoder.by_name(
-        "hubert-base-ls960", "kmeans", 100, True, True
-    )
-    dataset = QuantizedYesNo(speech_encoder, root="./", download=True)
-
-    print(dataset[0])
