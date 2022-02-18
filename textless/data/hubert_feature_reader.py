@@ -56,7 +56,7 @@ class HubertFeatureReader(torch.nn.Module):
 
         return self.get_features(x)
 
-    @torch.no_grad()
+    @torch.inference_mode()
     def get_features(self, x):
         x = x.to(self.device)
         if self.should_normalize:

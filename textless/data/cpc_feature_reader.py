@@ -28,7 +28,7 @@ class CpcFeatureReader(torch.nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.get_features(x)
 
-    @torch.no_grad()
+    @torch.inference_mode()
     def get_features(self, x: torch.Tensor) -> torch.Tensor:
         x = x.view(1, 1, -1)
         size = x.size(2)
