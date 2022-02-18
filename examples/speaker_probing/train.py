@@ -170,7 +170,6 @@ def main():
     speech_encoder = SpeechEncoder(
         dense_model,
         quantizer_model,
-        download=True,
         deduplicate=False,
         need_f0=False,
         add_bos_eos=True,
