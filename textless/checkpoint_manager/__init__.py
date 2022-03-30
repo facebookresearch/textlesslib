@@ -22,6 +22,12 @@ def populate_checkpoints():
             fname="hubert_base_ls960.pt",
             sha256="1703cf8d2cdc76f8c046f5f6a9bcd224e0e6caf4744cad1a1f4199c32cac8c8d",
         ),
+        Checkpoint(
+            name="mhubert-base-vp_en_es_fr",
+            remote_path="https://dl.fbaipublicfiles.com/hubert/mhubert_base_vp_en_es_fr_it3.pt",
+            fname="mhubert_base_vp_en_es_fr_it3.pt",
+            sha256="23527cd6311a6617bfa199f574e2eed478cd6a58a634f4007165c10ec0019832",
+        ),
         # Quantizers
         Checkpoint(
             name="hubert-base-ls960-kmeans-50",
@@ -46,6 +52,12 @@ def populate_checkpoints():
             remote_path="https://dl.fbaipublicfiles.com/textless_nlp/gslm/hubert/km500/km.bin",
             fname="hubert_base_ls960_km500.pt",
             sha256="411c8668e1314751404f58636f935fc73540a6793890435da4a8ffadf157398e",
+        ),
+        Checkpoint(
+            name="mhubert-base-vp_en_es_fr-layer-11-kmeans-1000",
+            remote_path="https://dl.fbaipublicfiles.com/hubert/mhubert_base_vp_en_es_fr_it3_L11_km1000.bin",
+            fname="mhubert_base_vp_en_es_fr_it3_L11_km1000.bin",
+            sha256="c70f5416c38044d0c20e33fdeedf4533974a8ac4029985cdef3b755038381a0b",
         ),
         # Tacotron2
         Checkpoint(
