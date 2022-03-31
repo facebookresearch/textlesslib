@@ -47,7 +47,8 @@ class CpcFeatureReader(torch.nn.Module):
             start += self.max_chunk
 
         if start < size:
-            x_chunk = x[:, -self.max_chunk :]
+            x_chunk = x[..., -self.max_chunk :]  # dimension wrong, \
+                                                 #     compare with above
             feat_chunk = self.model.extract_features(
                 source=x_chunk,
                 get_encoded=self.use_encoder_layer,
