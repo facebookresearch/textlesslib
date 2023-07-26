@@ -10,7 +10,12 @@ We train unit-based [hifigan](https://arxiv.org/pdf/2010.05646.pdf) vocoders usi
 
 ### Pre-trained model
 We share pre-trained hifigan vocoders using HuBERT units on the Expresso dataset, conditioning on one-hot speaker ans expression information.
-| Link | | |
+|HuBERT model|Quantizer|Vocoder Data|Vocoder Model|
+|---|---|---|---|
+|HuBERT base LS960 (Layer9)|Km500 (LS960)|Expresso|[download]()|
+|HuBERT base LS960 (Layer9)|Km2000 (Expresso)|Expresso|[download]()|
+|HuBERT Mix1 (Layer12)|Km2000 (LS960)|Expresso|[download]()|
+|HuBERT Mix1 (Layer12)|Km2000 (Expresso)|Expresso|[download]()|
 
 The resynthesis can be obtained from `textlesslib` as follows:
 ```python
