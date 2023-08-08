@@ -50,7 +50,7 @@ The Expresso dataset can be downloaded from the following link:
     * md5:
 ### Directory Structure
 
-A typical top-level directory layout
+The expresso dataset directory has the following structure:
 ```
 expresso/
 ├───README.txt
@@ -58,7 +58,12 @@ expresso/
 ├───read_transcriptions.txt
 ├───conversation_ASR_transcriptions.txt
 ├───conversation_prompts.txt
-├───VAD.txt
+├───VAD_segments.txt
+├───splits/
+│   ├───train.txt
+│   ├───dev.txt
+│   ├───test.txt
+│   └───README
 └───audio_48khz/
     ├───conversational/
     │   ├───ex04-ex01/ # speaker pair in {channel1_spk}-{channel2_spk} format
@@ -92,11 +97,10 @@ expresso/
 ```
 
 ## Data preparation for speech resynthesis
-We prepare the Expresso dataset for speech synthesis experiments by cutting down to short segments of less than 15 seconds based on VAD information obtained from [pyannote](https://github.com/pyannote/pyannote-audio).
+We prepare the Expresso dataset for speech synthesis experiments by cutting down to short segments of less than 15 seconds based on VAD information. The processing scripts can be found in the [processing](processing) directory.
 
-## Licences
+## Licence
 The Expresso dataset is distributed under the ?? licence.
 
-## Citation
-For more information, see the paper "EXPRESSO: A Benchmark and Analysis of
-Discrete Expressive Speech Resynthesis", Tu Anh Nguyen*, Wei-Ning Hsu*, Antony D'Avirro*, Bowen Shi*, Itai Gat, Maryam Fazel-Zarani, Tal Remez, Jade Copet, Gabriel Synnaeve, Michael Hassid, Felix Kreuk, Yossi Adi+, Emmanuel Dupoux+, INTERSPEECH 2023.
+## Reference
+For more information, see the paper "EXPRESSO: A Benchmark and Analysis of Discrete Expressive Speech Resynthesis", Tu Anh Nguyen*, Wei-Ning Hsu*, Antony D'Avirro*, Bowen Shi*, Itai Gat, Maryam Fazel-Zarani, Tal Remez, Jade Copet, Gabriel Synnaeve, Michael Hassid, Felix Kreuk, Yossi Adi+, Emmanuel Dupoux+, INTERSPEECH 2023.

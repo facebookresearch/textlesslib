@@ -1,0 +1,24 @@
+EXPRESSO SPLITS
+===============
+This is the train/dev/test split of the Expresso dataset used in the paper "EXPRESSO: A Benchmark and Analysis of Discrete Expressive Speech Resynthesis".
+
+We split the dataset such that each sub-style (speaker/style/corpus) has 1 minute in dev/test (if a sub-style has a total duration of less than 10 minutes, we'll take 10% of that total duration as target duration for dev/test).
+
+This split doesn't contain 'singing' style as there are only a few of them.
+
+SPLITTING RULES
+===============
+We split the dataset with the following rules:
+- For short speech (base read speech), we simply divide all files into 3 parts without segmenting them
+    1. Take the last n files for 'test' until they reach the target duration
+    2. Take the last m remaining files for 'dev' until they reach the target duration
+	3. Take the remaining files as 'train'
+For example, if a style contains ids 1->100, we'll take 92-100 for 'test' (given 92-100 ~ 60s), 81-91 for 'dev', and 1-80 for 'train'
+
+- For long speech (conversation speech, read/default/longform, read/narration/longform), we segment long files to have dev/test files with target duration
+    1. Sort the files by duration
+    2.1 If there are two files in the style longer than the target duration
+        - Extract 'test' file from the longest file (first 60s to 'test', and 60s- to 'train')
+        - Extract 'dev' file from the second-longest file (first 60s to 'dev', and 60s- to 'train')
+    2.2 If there is only one file longer than the target duration
+        - Extract 'dev'&'test' files from the longest file (first 60s to 'dev', 60s-120s to 'test', 120s- to 'train')

@@ -47,7 +47,7 @@ def predict_audio(audio, feature_extractor, model, label_names):
 
 if __name__=="__main__":
     import argparse
-    parser = argparse.ArgumentParser(description='Reorganize and move audio to many sub-directories')
+    parser = argparse.ArgumentParser(description='Audio classification with Transformers model')
     parser.add_argument('--model_ckpt', type=str, required=True,
                     help='Path to the model checkpoint')
     parser.add_argument('--from_tsv', type=str,

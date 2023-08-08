@@ -20,6 +20,7 @@ DENSE_MODELS = {
 
 QUANTIZER_MODELS = {
     "kmeans": KMeansQuantizer,
+    "kmeans-expresso": KMeansQuantizer,
 }
 
 

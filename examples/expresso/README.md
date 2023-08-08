@@ -9,13 +9,13 @@ Please go to the [dataset](dataset/) repository to have access to the Expresso d
 We train unit-based [hifigan](https://arxiv.org/pdf/2010.05646.pdf) vocoders using speech units obtained from [HuBERT](https://arxiv.org/pdf/2106.07447.pdf) model as input. We condition the vocoder with one-hot speaker and style information of the utterance similar to [this work](https://arxiv.org/pdf/2104.00355.pdf).
 
 ### 2.1 Pre-trained model
-We share pre-trained hifigan vocoders using HuBERT units on the Expresso dataset, conditioning on one-hot speaker ans expression information.
-|HuBERT model|Quantizer|Vocoder Data|Vocoder Model|
+We share pre-trained hifigan vocoders using HuBERT units on Expresso, LJ and VCTK datasets, conditioning on one-hot speaker and expression information (*you don't need to manually download the checkpoints if using `textlesslib` as shown below*).
+|HuBERT model|Quantizer|Vocoder Data|HifiGAN Vocoder Model|
 |---|---|---|---|
-|HuBERT base LS960 (Layer9)|Km500 (LS960)|Expresso|[download]()|
-|HuBERT base LS960 (Layer9)|Km2000 (Expresso)|Expresso|[download]()|
-|HuBERT Mix1 (Layer12)|Km2000 (LS960)|Expresso|[download]()|
-|HuBERT Mix1 (Layer12)|Km2000 (Expresso)|Expresso|[download]()|
+|[HuBERT base LS960](https://dl.fbaipublicfiles.com/hubert/hubert_base_ls960.pt)|[L9 km500 (LS960)](https://dl.fbaipublicfiles.com/hubert/hubert_base_ls960_L9_km500.bin)|Expresso + LJ + VCTK|[generator.pt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500/generator.pt) - [config.json](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500/config.json) - [speakers.txt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500/speakers.txt) - [styles.txt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500/styles.txt)|
+|[HuBERT base LS960](https://dl.fbaipublicfiles.com/hubert/hubert_base_ls960.pt)|[L9 km2000 (Expresso)](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hubert_base_ls960_L9_km2000_expresso.bin)|Expresso + LJ + VCTK|[generator.pt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso/generator.pt) - [config.json](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso/config.json) - [speakers.txt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso/speakers.txt) - [styles.txt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso/styles.txt)|
+|[HuBERT Mix1 (VP, MLS, CV)](https://dl.fbaipublicfiles.com/hubert/mhubert_base_vp_mls_cv_8lang_it3.pt)|[L12 km2000 (Mix1)](https://dl.fbaipublicfiles.com/hubert/mhubert_base_vp_mls_cv_8lang_it3_L12_km2000.bin)|Expresso + LJ + VCTK|[generator.pt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000/generator.pt) - [config.json](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000/config.json) - [speakers.txt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000/speakers.txt) - [styles.txt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000/styles.txt)|
+|[HuBERT Mix1 (VP, MLS, CV)](https://dl.fbaipublicfiles.com/hubert/mhubert_base_vp_mls_cv_8lang_it3.pt)|[L12 km2000 (Expresso)](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso.bin)|Expresso + LJ + VCTK|[generator.pt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/generator.pt) - [config.json](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/config.json) - [speakers.txt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/speakers.txt) - [styles.txt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/styles.txt)|
 
 The resynthesis can be obtained from `textlesslib` as follows:
 ```python
@@ -23,23 +23,34 @@ import torchaudio
 from textless.data.speech_encoder import SpeechEncoder
 from textless.vocoders.hifigan.vocoder import CodeHiFiGANVocoder
 
+# Available models
+EXPRESSO_MODELS = [
+    ("hubert-base-ls960-layer-9", "kmeans", 500),
+    ("hubert-base-ls960-layer-9", "kmeans-expresso", 2000),
+    ("mhubert-base-vp_mls_cv_8lang", "kmeans", 2000),
+    ("mhubert-base-vp_mls_cv_8lang", "kmeans-expresso", 2000),
+]
+
+# Try one model
+dense_model, quantizer_model, vocab = EXPRESSO_MODELS[3]
 
 # Load speech encoder and vocoder
 encoder = SpeechEncoder.by_name(
-    dense_model_name = "hubert-base-ls960-layer-9",
-    quantizer_model_name = "kmeans",
-    vocab_size = 500,
+    dense_model_name = dense_model,
+    quantizer_model_name = quantizer_model,
+    vocab_size = vocab,
     deduplicate = False, # False if the vocoder doesn't support duration prediction
 ).cuda()
 
 vocoder = CodeHiFiGANVocoder.by_name(
-    dense_model_name = "hubert-base-ls960-layer-9",
-    quantizer_model_name = "kmeans",
-    vocab_size = 500,
-    vocoder_suffix = "expresso",
+    dense_model_name = dense_model,
+    quantizer_model_name = quantizer_model,
+    vocab_size = vocab,
     speaker_meta = True,
     style_meta = True
 ).cuda()
+speakers = vocoder.speakers # ['ex01', 'ex02', 'ex03', 'ex04', 'lj', 'vctk_p225', ...]
+styles = vocoder.styles # ['read-default', 'read-happy', 'read-sad', 'read-whisper', ...]
 
 # Load the audio
 input_file = "path/to/audio.wav"
@@ -50,7 +61,11 @@ encoded = encoder(waveform.cuda())
 units = encoded["units"] # torch.Tensor([17, 17, 17, 17, 296, 296,...])
 
 # Convert units back to audio
-audio = vocoder(units) # torch.Tensor([-9.9573e-04, -1.7003e-04, -6.8756e-05,...])
+audio = vocoder(
+    units,
+    speaker_id=speakers.index('ex01'),
+    style_id=styles.index('read-default'),
+) # torch.Tensor([-9.9573e-04, -1.7003e-04, -6.8756e-05,...])
 ```
 Please note that you'll need a reasonably recent version of fairseq (i.e. [fairseq/tree/100cd91db1](https://github.com/facebookresearch/fairseq/tree/100cd91db19bb27277a06a25eb4154c805b10189)) in order to load HuBERT Mix1 checkpoint.
 
