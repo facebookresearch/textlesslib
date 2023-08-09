@@ -100,7 +100,7 @@ expresso/
 We prepare the Expresso dataset for speech synthesis experiments by cutting down to short segments of less than 15 seconds based on VAD information. The processing scripts can be found in the [processing](processing) directory.
 
 ## Licence
-The Expresso dataset is distributed under the ?? licence.
+The Expresso dataset is distributed under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license.
 
 ## Reference
 For more information, see the paper "EXPRESSO: A Benchmark and Analysis of Discrete Expressive Speech Resynthesis", Tu Anh Nguyen*, Wei-Ning Hsu*, Antony D'Avirro*, Bowen Shi*, Itai Gat, Maryam Fazel-Zarani, Tal Remez, Jade Copet, Gabriel Synnaeve, Michael Hassid, Felix Kreuk, Yossi Adi+, Emmanuel Dupoux+, INTERSPEECH 2023.
