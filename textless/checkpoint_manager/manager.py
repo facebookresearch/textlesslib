@@ -37,7 +37,7 @@ class CheckpointManager:
             url=checkpoint.remote_path,
             dst=(self.disk_root / checkpoint.fname),
             hash_prefix=checkpoint.sha256,
-            progress=True
+            progress=True,
         )
 
     def get_by_name(self, name: str, download_if_needed: bool = True) -> pathlib.Path:

@@ -22,17 +22,31 @@ class Generator(nn.Module):
         super(Generator, self).__init__()
         self.num_kernels = len(cfg["resblock_kernel_sizes"])
         self.num_upsamples = len(cfg["upsample_rates"])
-        self.conv_pre = weight_norm(Conv1d(cfg.get("model_in_dim", 80),
-                                           cfg["upsample_initial_channel"], 7, 1, padding=3))
+        self.conv_pre = weight_norm(
+            Conv1d(
+                cfg.get("model_in_dim", 80),
+                cfg["upsample_initial_channel"],
+                7,
+                1,
+                padding=3,
+            )
+        )
 
         self.ups = nn.ModuleList()
         for i, (u, k) in enumerate(
             zip(cfg["upsample_rates"], cfg["upsample_kernel_sizes"])
         ):
-            self.ups.append(weight_norm(ConvTranspose1d(
+            self.ups.append(
+                weight_norm(
+                    ConvTranspose1d(
                         cfg["upsample_initial_channel"] // (2**i),
                         cfg["upsample_initial_channel"] // (2 ** (i + 1)),
-                        k, u, padding=(k - u) // 2)))
+                        k,
+                        u,
+                        padding=(k - u) // 2,
+                    )
+                )
+            )
 
         self.resblocks = nn.ModuleList()
         for i in range(len(self.ups)):
@@ -185,25 +199,28 @@ class VariancePredictor(nn.Module):
         encoder_embed_dim,
         var_pred_hidden_dim,
         var_pred_kernel_size,
-        var_pred_dropout
+        var_pred_dropout,
     ):
         super().__init__()
         self.conv1 = nn.Sequential(
             nn.Conv1d(
-                encoder_embed_dim, var_pred_hidden_dim,
+                encoder_embed_dim,
+                var_pred_hidden_dim,
                 kernel_size=var_pred_kernel_size,
-                padding=(var_pred_kernel_size - 1) // 2
+                padding=(var_pred_kernel_size - 1) // 2,
             ),
-            nn.ReLU()
+            nn.ReLU(),
         )
         self.ln1 = nn.LayerNorm(var_pred_hidden_dim)
         self.dropout = var_pred_dropout
         self.conv2 = nn.Sequential(
             nn.Conv1d(
-                var_pred_hidden_dim, var_pred_hidden_dim,
-                kernel_size=var_pred_kernel_size, padding=1
+                var_pred_hidden_dim,
+                var_pred_hidden_dim,
+                kernel_size=var_pred_kernel_size,
+                padding=1,
             ),
-            nn.ReLU()
+            nn.ReLU(),
         )
         self.ln2 = nn.LayerNorm(var_pred_hidden_dim)
         self.proj = nn.Linear(var_pred_hidden_dim, 1)

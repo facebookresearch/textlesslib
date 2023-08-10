@@ -33,30 +33,30 @@ class CodeHiFiGANVocoder(nn.Module):
 
         # Load hifigan model
         self.model = CodeGenerator(cfg)
-        state_dict = torch.load(hifigan_model_path, map_location='cpu')
+        state_dict = torch.load(hifigan_model_path, map_location="cpu")
         self.model.load_state_dict(state_dict["generator"])
         self.model.eval()
         if fp16:
             self.model.half()
         self.model.remove_weight_norm()
-        print(f"CodeHiFiGAN model loaded!")
+        print("CodeHiFiGAN model loaded!")
 
         # Load hifigan metadata (if exists)
         self.speakers, self.styles = load_vocoder_meta(
-            speakers_path=hifigan_speaker_path,
-            styles_path=hifigan_style_path
+            speakers_path=hifigan_speaker_path, styles_path=hifigan_style_path
         )
 
         # Useful for detecting device
         self.register_buffer("_float_tensor", torch.tensor([0], dtype=torch.float))
 
     def forward(
-            self,
-            code: torch.Tensor,
-            speaker_id: int = 0,
-            style_id: int = 0,
-            f0: torch.Tensor = None,
-            dur_prediction: bool = False) -> torch.Tensor:
+        self,
+        code: torch.Tensor,
+        speaker_id: int = 0,
+        style_id: int = 0,
+        f0: torch.Tensor = None,
+        dur_prediction: bool = False,
+    ) -> torch.Tensor:
         x = dict()
         x["code"] = code
         if self.model.multispkr:
@@ -69,7 +69,9 @@ class CodeHiFiGANVocoder(nn.Module):
 
         x["dur_prediction"] = dur_prediction
         if dur_prediction:
-            assert self.model.dur_predictor is not None, "This CodeHiFiGAN model doesn't support duration prediction!"
+            assert (
+                self.model.dur_predictor is not None
+            ), "This CodeHiFiGAN model doesn't support duration prediction!"
 
         # remove invalid code
         mask = x["code"] >= 0
@@ -87,7 +89,7 @@ class CodeHiFiGANVocoder(nn.Module):
 
     @property
     def output_sample_rate(self) -> int:
-        return self.cfg.get('sampling_rate', 16_000)
+        return self.cfg.get("sampling_rate", 16_000)
 
     @classmethod
     def by_name(
@@ -97,7 +99,7 @@ class CodeHiFiGANVocoder(nn.Module):
         vocab_size: int,
         vocoder_suffix: str = None,
         speaker_meta: bool = False,
-        style_meta: bool = False
+        style_meta: bool = False,
     ):
 
         # Get hifigan checkpoint name and path
@@ -105,7 +107,7 @@ class CodeHiFiGANVocoder(nn.Module):
             f"{dense_model_name}-{quantizer_model_name}-{vocab_size}-hifigan"
         )
         if vocoder_suffix is not None:
-            hifigan_checkpoint_name += "-"+vocoder_suffix
+            hifigan_checkpoint_name += "-" + vocoder_suffix
         hifigan_checkpoint_path = CHECKPOINT_MANAGER.get_by_name(
             hifigan_checkpoint_name
         )
@@ -154,9 +156,8 @@ def load_vocoder_meta(speakers_path=None, styles_path=None):
 
 
 def preprocess_code(
-        code: Union[str, list, torch.Tensor],
-        deduplicate_code: bool = False
-    ) -> torch.Tensor:
+    code: Union[str, list, torch.Tensor], deduplicate_code: bool = False
+) -> torch.Tensor:
     """
     Convert the code to a long tensor.
     The code can be one of the following forms:

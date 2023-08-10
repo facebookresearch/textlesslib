@@ -156,7 +156,6 @@ def populate_checkpoints():
             fname="hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500_styles.txt",
             sha256="a6f63206518448277c63c3a251ac13484784829cf2e1b0a23b0860dd32543520",
         ),
-
         # hubert_base_km2000_L9_expresso
         Checkpoint(
             name="hubert-base-ls960-layer-9-kmeans-expresso-2000-hifigan",
@@ -182,7 +181,6 @@ def populate_checkpoints():
             fname="hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso_styles.txt",
             sha256="a6f63206518448277c63c3a251ac13484784829cf2e1b0a23b0860dd32543520",
         ),
-
         # mhubert_base_vp_mls_cv_8lang_it3_L12_km2000
         Checkpoint(
             name="mhubert-base-vp_mls_cv_8lang-kmeans-2000-hifigan",
@@ -208,7 +206,6 @@ def populate_checkpoints():
             fname="hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_styles.txt",
             sha256="a6f63206518448277c63c3a251ac13484784829cf2e1b0a23b0860dd32543520",
         ),
-
         # mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso
         Checkpoint(
             name="mhubert-base-vp_mls_cv_8lang-kmeans-expresso-2000-hifigan",
@@ -234,7 +231,6 @@ def populate_checkpoints():
             fname="hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso_styles.txt",
             sha256="a6f63206518448277c63c3a251ac13484784829cf2e1b0a23b0860dd32543520",
         ),
-
     ]
 
     # CPC-based stuff
