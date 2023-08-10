@@ -1,6 +1,8 @@
 # Expresso: A Benchmark and Analysis of Discrete Expressive Speech Resynthesis
 
-We introduce Expresso, a high-quality expressive speech dataset that includes both expressively rendered read speech (7 styles) and improvised dialogues rendered (26 styles). The dataset includes 4 speakers (2 males, 2 females), and totals 40 hours. The task of the Expresso Benchmark is to resynthesize the input audio using a low-bitrate discrete code that has been obtained without supervision from text.
+[[paper]]() [[demo samples]](https://speechbot.github.io/expresso/) [[dataset]](dataset/)
+
+We introduce Expresso, a high-quality (48kHz) expressive speech dataset that includes both expressively rendered read speech (8 styles, in mono wav format) and improvised dialogues (26 styles, in stereo wav format). The dataset includes 4 speakers (2 males, 2 females), and totals 40 hours (11h read, 30h improvised). The transcriptions of the read speech are also provided. The task of the Expresso Benchmark is to resynthesize the input audio using a low-bitrate discrete code that has been obtained without supervision from text.
 
 ## 1. The Expresso dataset
 Please go to the [dataset](dataset/) repository to have access to the Expresso dataset.

@@ -1,7 +1,10 @@
 # The Expresso Dataset
+[[paper]]() [[demo samples]](https://speechbot.github.io/expresso/)
 
 ## Introduction
-The Expresso dataset is a high-quality expressive speech dataset suitable for expressivity speech research. The dataset contains expressively rendered read speech (7 styles) and improvised dialogues (26 styles), with 4 speakers (2 males, 2 females), and totals 40 hours. We also prove an additional transcription of the read speech as well as the prompt description for improvised dialogues.
+The Expresso dataset is a high-quality (48kHz) expressive speech dataset that includes both expressively rendered read speech (8 styles, in mono wav format) and improvised dialogues (26 styles, in stereo wav format). The dataset includes 4 speakers (2 males, 2 females), and totals 40 hours (11h read, 30h improvised). The transcriptions of the read speech are also provided.
+
+You can listen to samples from the Expresso Dataset at this [website](https://speechbot.github.io/expresso/).
 
 ## Data Statistics
 Here is the statistics of Expresso’s expressive styles:
@@ -35,29 +38,26 @@ Here is the statistics of Expresso’s expressive styles:
  sleepy           | -          | 93               | 1.5
  sympathetic      | -          | 100              | 1.7
  whisper          | 79         | 86               | 2.8
- **Total**        | **692**    | **2063**         | **45.9**
+ **Total**        | **11.5h**  | **34.4h**        | **45.9h**
 ----------------------------------------------------------------
 *singing is the only improvised style that is not in dialogue format.
 
 ## Audio Quality
-The audio was recorded in a professional recording studio with minimal background noise at 48kHz/24bit. The files for read speech and singing are in a mono wav format; and for the dialog
-section in stereo (one channel per actor), where the original flow of turn-taking is preserved.
+The audio was recorded in a professional recording studio with minimal background noise at 48kHz/24bit. The files for read speech and singing are in a mono wav format; and for the dialog section in stereo (one channel per actor), where the original flow of turn-taking is preserved.
 
 ## Downloading the Expresso dataset
 ### Downloading
 The Expresso dataset can be downloaded from the following link:
-* [expresso.tar (30GB)]()
-    * md5:
+* [expresso.tar (36GB)](https://dl.fbaipublicfiles.com/textless_nlp/expresso/data/expresso.tar)
+    * md5: `6bf580a4cd4392ae2473626147b5307c`
 ### Directory Structure
 
 The expresso dataset directory has the following structure:
 ```
 expresso/
 ├───README.txt
-├───METAINFO.txt
+├───LICENSE.txt
 ├───read_transcriptions.txt
-├───conversation_ASR_transcriptions.txt
-├───conversation_prompts.txt
 ├───VAD_segments.txt
 ├───splits/
 │   ├───train.txt
@@ -96,11 +96,41 @@ expresso/
         └───...
 ```
 
+### Conversational Speech
+The `conversational` audio directory contains the improvised dialogues (except singing) and is organized with the following structure:
+
+`conversational/{speaker pair}/{styles}/{speaker pair}_{styles}_{id}.wav`
+
+where
+
+- `{speaker pair}`: hyphen-separated pair of speakers in two channels, with the left speaker on first/left channel, and the right speaker on second/right channel. E.g. `ex03-ex01` means `ex03` on channel 1 and `ex01` on channel 2
+
+- `{styles}`: styles of the two channels of the dialogue. If `{styles}` **contains a hyphen**, the scene contains **two styles**. The style on the left corresponds to the channel1/left speaker’s style, and the style on the right corresponds to the channel2/right speaker’s style. If the is **no hyphen**, both speakers are speaking in the same style
+
+- `{id}`: ID of the audio with the given speaker pair and style
+
+### Read Speech
+The `read` audio directory contains all the read speech and singing style, with the following structure:
+
+`read/{speaker}/{style}/{corpus}/{speaker}_{style or substyle}_{id}.wav`
+
+where
+
+- `{speaker}`: speaker name
+
+- `{style}`: expressive style of the audio
+
+- `{corpus}`: 'base' or 'longform'
+
+- `{style or substyle}`: same as `{style}`, with the exception of longform speech and default substyles. The exception substyles are: 'narration_longform', 'default_longform', 'default_emphasis', 'default_essentials'
+
+- `{id}`: ID of the audio with the given speaker and style/substyle
+
 ## Data preparation for speech resynthesis
 We prepare the Expresso dataset for speech synthesis experiments by cutting down to short segments of less than 15 seconds based on VAD information. The processing scripts can be found in the [processing](processing) directory.
 
-## Licence
+## License
 The Expresso dataset is distributed under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license.
 
 ## Reference
-For more information, see the paper "EXPRESSO: A Benchmark and Analysis of Discrete Expressive Speech Resynthesis", Tu Anh Nguyen*, Wei-Ning Hsu*, Antony D'Avirro*, Bowen Shi*, Itai Gat, Maryam Fazel-Zarani, Tal Remez, Jade Copet, Gabriel Synnaeve, Michael Hassid, Felix Kreuk, Yossi Adi+, Emmanuel Dupoux+, INTERSPEECH 2023.
+For more information, see the paper "EXPRESSO: A Benchmark and Analysis of Discrete Expressive Speech Resynthesis", Tu Anh Nguyen*, Wei-Ning Hsu*, Antony D'Avirro*, Bowen Shi*, Itai Gat, Maryam Fazel-Zarani, Tal Remez, Jade Copet, Gabriel Synnaeve, Michael Hassid, Felix Kreuk, Yossi Adi⁺, Emmanuel Dupoux⁺, INTERSPEECH 2023.
