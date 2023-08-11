@@ -1,6 +1,6 @@
 # Expresso: A Benchmark and Analysis of Discrete Expressive Speech Resynthesis
 
-[[paper]]() [[demo samples]](https://speechbot.github.io/expresso/) [[dataset]](dataset/)
+[[paper]](https://arxiv.org/abs/2308.05725) [[demo samples]](https://speechbot.github.io/expresso/) [[dataset]](dataset/)
 
 We introduce Expresso, a high-quality (48kHz) expressive speech dataset that includes both expressively rendered read speech (8 styles, in mono wav format) and improvised dialogues (26 styles, in stereo wav format). The dataset includes 4 speakers (2 males, 2 females), and totals 40 hours (11h read, 30h improvised). The transcriptions of the read speech are also provided. The task of the Expresso Benchmark is to resynthesize the input audio using a low-bitrate discrete code that has been obtained without supervision from text.
 
@@ -139,7 +139,7 @@ We fine-tune the wav2vec2-base model on audio classification task using [transfo
 You can download model checkpoint and config here
 |Model Checkpoint|Config|Preprocessor Config|
 |---|---|---|
-|[pytorch_model.bin]()|[config.json]()|[preprocessor_config.json]()|
+|[pytorch_model.bin](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/wav2vec2_emotion_classification/pytorch_model.bin)|[config.json](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/wav2vec2_emotion_classification/config.json)|[preprocessor_config.json](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/wav2vec2_emotion_classification/preprocessor_config.json)|
 
 #### 3.2.2 Run emotion classification
 Use the `classify_audio.py` script to perform prediction and possibly compute the accuracy if the label file is given. Here is an example command
@@ -179,4 +179,12 @@ python examples/speech_synthesis/evaluation/eval_f0.py \
 ## Citation
 Please consider citing our work if you find it useful in your research:
 ```
+@misc{nguyen2023expresso,
+      title={EXPRESSO: A Benchmark and Analysis of Discrete Expressive Speech Resynthesis},
+      author={Tu Anh Nguyen and Wei-Ning Hsu and Antony D'Avirro and Bowen Shi and Itai Gat and Maryam Fazel-Zarani and Tal Remez and Jade Copet and Gabriel Synnaeve and Michael Hassid and Felix Kreuk and Yossi Adi and Emmanuel Dupoux},
+      year={2023},
+      eprint={2308.05725},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 ```

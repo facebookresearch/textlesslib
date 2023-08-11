@@ -1,10 +1,10 @@
 # The Expresso Dataset
-[[paper]]() [[demo samples]](https://speechbot.github.io/expresso/)
+[[paper]](https://arxiv.org/abs/2308.05725) [[demo samples]](https://speechbot.github.io/expresso/)
 
 ## Introduction
 The Expresso dataset is a high-quality (48kHz) expressive speech dataset that includes both expressively rendered read speech (8 styles, in mono wav format) and improvised dialogues (26 styles, in stereo wav format). The dataset includes 4 speakers (2 males, 2 females), and totals 40 hours (11h read, 30h improvised). The transcriptions of the read speech are also provided.
 
-You can listen to samples from the Expresso Dataset at this [website](https://speechbot.github.io/expresso/).
+You can listen to samples from the Expresso Dataset at [this website](https://speechbot.github.io/expresso/).
 
 ## Data Statistics
 Here is the statistics of Expresso’s expressive styles:
@@ -133,4 +133,4 @@ We prepare the Expresso dataset for speech synthesis experiments by cutting down
 The Expresso dataset is distributed under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license.
 
 ## Reference
-For more information, see the paper "EXPRESSO: A Benchmark and Analysis of Discrete Expressive Speech Resynthesis", Tu Anh Nguyen*, Wei-Ning Hsu*, Antony D'Avirro*, Bowen Shi*, Itai Gat, Maryam Fazel-Zarani, Tal Remez, Jade Copet, Gabriel Synnaeve, Michael Hassid, Felix Kreuk, Yossi Adi⁺, Emmanuel Dupoux⁺, INTERSPEECH 2023.
+For more information, see the paper: [EXPRESSO: A Benchmark and Analysis of Discrete Expressive Speech Resynthesis](https://arxiv.org/abs/2308.05725), Tu Anh Nguyen*, Wei-Ning Hsu*, Antony D'Avirro*, Bowen Shi*, Itai Gat, Maryam Fazel-Zarani, Tal Remez, Jade Copet, Gabriel Synnaeve, Michael Hassid, Felix Kreuk, Yossi Adi⁺, Emmanuel Dupoux⁺, INTERSPEECH 2023.
