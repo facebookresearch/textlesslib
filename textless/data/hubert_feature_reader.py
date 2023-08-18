@@ -11,7 +11,7 @@ import torch.nn.functional as F
 
 class HubertFeatureReader(torch.nn.Module):
     def __init__(
-        self, checkpoint_path, layer=6, max_chunk=100 * 16_000, lazy_load=False
+        self, checkpoint_path, layer=6, feat_hop_size=320, max_chunk=100 * 16_000, lazy_load=False
     ):
         super().__init__()
         # NB: fairseq doesn't support pathlib.Path
@@ -20,6 +20,7 @@ class HubertFeatureReader(torch.nn.Module):
         self.lazy_load = lazy_load
         self.model = None
         self.layer = layer
+        self.feat_hop_size = feat_hop_size
         self.max_chunk = max_chunk
         # this is useful for determining the device
         self.register_buffer("_float_tensor", torch.tensor([0], dtype=torch.float))
@@ -44,7 +45,7 @@ class HubertFeatureReader(torch.nn.Module):
 
     @property
     def code_hop_size(self) -> int:
-        return 320
+        return self.feat_hop_size
 
     @property
     def expected_sample_rate(self) -> int:

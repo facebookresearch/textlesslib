@@ -34,6 +34,12 @@ def populate_checkpoints():
             fname="mhubert_base_vp_mls_cv_8lang_it3.pt",
             sha256="fa82eaccb557465f4732662e3a744c30c953059147ac6a4c92f1f3e0daeda61e",
         ),
+        Checkpoint(
+            name="mhubert-base-25hz",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/mhubert_base_25hz_cp_mls_cv_sp_fisher.pt",
+            fname="mhubert_base_25hz_cp_mls_cv_sp_fisher.pt",
+            sha256="edf0f5be2581a568a236aeb2781a5607c5af25806e12f40f7f2391e861fe3cf0",
+        ),
         # Quantizers
         Checkpoint(
             name="hubert-base-ls960-kmeans-50",
@@ -89,6 +95,12 @@ def populate_checkpoints():
             fname="mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso.pt",
             sha256="bda2dbf5fe42bf59359799b281498a9d7fd0a9ec703d6dc54a4a4a0ff70a4e22",
         ),
+        Checkpoint(
+            name="mhubert-base-25hz-kmeans-500",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/mhubert_base_25hz_cp_mls_cv_sp_fisher_L11_km500.bin",
+            fname="mhubert_base_25hz_cp_mls_cv_sp_fisher_L11_km500.bin",
+            sha256="03cc04a9c24fec4285e73e709c485756d8f116aa8e724eac555de6a7cf8d28ad",
+        ),
         # Tacotron2
         Checkpoint(
             name="hubert-base-ls960-kmeans-50-tacotron",
@@ -126,6 +138,19 @@ def populate_checkpoints():
             remote_path="https://dl.fbaipublicfiles.com/textless_nlp/gslm/hubert/tts_km200/code_dict",
             fname="hubert_base_ls960_kmeans_200_tacotron_codes.pt",
             sha256="ea01ba3592e27c871b63b32e37d6532234edf7eee7077bdcc094061ee72922e6",
+        ),
+        # Hifigan
+        Checkpoint(
+            name="mhubert-base-25hz-kmeans-500-hifigan",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/hifigan_lj_mhubert_base_25hz.pt",
+            fname="hifigan_lj_mhubert_base_25hz.pt",
+            sha256="d88224e95c501e2cd59a6e4014753169cfe060fb7ade3cc0da03c809fef73b79",
+        ),
+        Checkpoint(
+            name="mhubert-base-25hz-kmeans-500-hifigan-config",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/hifigan_lj_mhubert_base_25hz_config.json",
+            fname="hifigan_lj_mhubert_base_25hz_config.json",
+            sha256="116dc39be4970cd393e562acd0a0ec70a86aaba7e9ca469b8b836cb3fe46afc7",
         ),
     ]
 

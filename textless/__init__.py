@@ -10,11 +10,12 @@ from textless.checkpoint_manager import CHECKPOINT_MANAGER
 from textless.vocoders.tacotron2.vocoder import TacotronVocoder
 from textless.vocoders.hifigan.vocoder import CodeHiFiGANVocoder
 
-# Values are expected to be (DenseModelClass, DenseModelBasename, DenseModelLayer)
+# Values are expected to be (DenseModelClass, DenseModelBasename, DenseModelLayer, kwargs)
 DENSE_MODELS = {
     "hubert-base-ls960": (HubertFeatureReader, "hubert-base-ls960", 6),
     "hubert-base-ls960-layer-9": (HubertFeatureReader, "hubert-base-ls960", 9),
     "mhubert-base-vp_mls_cv_8lang": (HubertFeatureReader, "mhubert-base-vp_mls_cv_8lang", 12),
+    "mhubert-base-25hz": (HubertFeatureReader, "mhubert-base-25hz", 11, {'feat_hop_size': 640}),
     "cpc-big-ll6k": (CpcFeatureReader, "cpc-big-ll6k", 2),
 }
 
@@ -26,7 +27,12 @@ QUANTIZER_MODELS = {
 
 # TODO: add kwargs everywhere
 def dispatch_dense_model(name: str, **kwargs):
-    model_class, model_basename, model_layer = DENSE_MODELS[name]
+    model_class, model_basename, model_layer, *model_kwargs = DENSE_MODELS[name]
+    for mkwargs in model_kwargs:
+        for k, v in mkwargs.items():
+            # don't overwrite kwargs
+            if k not in kwargs:
+                kwargs[k] = v
     checkpoint_path = CHECKPOINT_MANAGER.get_by_name(model_basename)
     return model_class(checkpoint_path, layer=model_layer, **kwargs)
 
