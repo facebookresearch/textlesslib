@@ -28,6 +28,18 @@ def populate_checkpoints():
             fname="mhubert_base_vp_en_es_fr_it3.pt",
             sha256="23527cd6311a6617bfa199f574e2eed478cd6a58a634f4007165c10ec0019832",
         ),
+        Checkpoint(
+            name="mhubert-base-vp_mls_cv_8lang",
+            remote_path="https://dl.fbaipublicfiles.com/hubert/mhubert_base_vp_mls_cv_8lang_it3.pt",
+            fname="mhubert_base_vp_mls_cv_8lang_it3.pt",
+            sha256="fa82eaccb557465f4732662e3a744c30c953059147ac6a4c92f1f3e0daeda61e",
+        ),
+        Checkpoint(
+            name="mhubert-base-25hz",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/mhubert_base_25hz_cp_mls_cv_sp_fisher.pt",
+            fname="mhubert_base_25hz_cp_mls_cv_sp_fisher.pt",
+            sha256="edf0f5be2581a568a236aeb2781a5607c5af25806e12f40f7f2391e861fe3cf0",
+        ),
         # Quantizers
         Checkpoint(
             name="hubert-base-ls960-kmeans-50",
@@ -58,6 +70,36 @@ def populate_checkpoints():
             remote_path="https://dl.fbaipublicfiles.com/hubert/mhubert_base_vp_en_es_fr_it3_L11_km1000.bin",
             fname="mhubert_base_vp_en_es_fr_it3_L11_km1000.bin",
             sha256="c70f5416c38044d0c20e33fdeedf4533974a8ac4029985cdef3b755038381a0b",
+        ),
+        Checkpoint(
+            name="hubert-base-ls960-layer-9-kmeans-500",
+            remote_path="https://dl.fbaipublicfiles.com/hubert/hubert_base_ls960_L9_km500.bin",
+            fname="hubert_base_ls960_L9_km500.pt",
+            sha256="4450dcbc90aa7d0553306a4b0fafef35c9b3c840468f02969273dfbb9db89a23",
+        ),
+        Checkpoint(
+            name="hubert-base-ls960-layer-9-kmeans-expresso-2000",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hubert_base_ls960_L9_km2000_expresso.bin",
+            fname="hubert_base_ls960_L9_km2000_expresso.pt",
+            sha256="ae73e3cc7ea0426faf43c8bb67fc3846a0f8708232526d045a101836e8c7929f",
+        ),
+        Checkpoint(
+            name="mhubert-base-vp_mls_cv_8lang-kmeans-2000",
+            remote_path="https://dl.fbaipublicfiles.com/hubert/mhubert_base_vp_mls_cv_8lang_it3_L12_km2000.bin",
+            fname="mhubert_base_vp_mls_cv_8lang_it3_L12_km2000.pt",
+            sha256="05de230870427dcdce334d29922ccce354c7e7d0574edc645f5daed47b1ccc18",
+        ),
+        Checkpoint(
+            name="mhubert-base-vp_mls_cv_8lang-kmeans-expresso-2000",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso.bin",
+            fname="mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso.pt",
+            sha256="bda2dbf5fe42bf59359799b281498a9d7fd0a9ec703d6dc54a4a4a0ff70a4e22",
+        ),
+        Checkpoint(
+            name="mhubert-base-25hz-kmeans-500",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/mhubert_base_25hz_cp_mls_cv_sp_fisher_L11_km500.bin",
+            fname="mhubert_base_25hz_cp_mls_cv_sp_fisher_L11_km500.bin",
+            sha256="03cc04a9c24fec4285e73e709c485756d8f116aa8e724eac555de6a7cf8d28ad",
         ),
         # Tacotron2
         Checkpoint(
@@ -96,6 +138,123 @@ def populate_checkpoints():
             remote_path="https://dl.fbaipublicfiles.com/textless_nlp/gslm/hubert/tts_km200/code_dict",
             fname="hubert_base_ls960_kmeans_200_tacotron_codes.pt",
             sha256="ea01ba3592e27c871b63b32e37d6532234edf7eee7077bdcc094061ee72922e6",
+        ),
+        # Hifigan
+        Checkpoint(
+            name="mhubert-base-25hz-kmeans-500-hifigan",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/hifigan_lj_mhubert_base_25hz.pt",
+            fname="hifigan_lj_mhubert_base_25hz.pt",
+            sha256="d88224e95c501e2cd59a6e4014753169cfe060fb7ade3cc0da03c809fef73b79",
+        ),
+        Checkpoint(
+            name="mhubert-base-25hz-kmeans-500-hifigan-config",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/hifigan_lj_mhubert_base_25hz_config.json",
+            fname="hifigan_lj_mhubert_base_25hz_config.json",
+            sha256="116dc39be4970cd393e562acd0a0ec70a86aaba7e9ca469b8b836cb3fe46afc7",
+        ),
+    ]
+
+    # Expresso Hifigan models
+    checkpoints += [
+        # hubert_base_km500_L9
+        Checkpoint(
+            name="hubert-base-ls960-layer-9-kmeans-500-hifigan",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500/generator.pt",
+            fname="hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500_generator.pt",
+            sha256="d50f4704e961c29cb386924ef32cd0c3a4d1089a3f9be856f8a3b6dcfdd6147a",
+        ),
+        Checkpoint(
+            name="hubert-base-ls960-layer-9-kmeans-500-hifigan-config",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500/config.json",
+            fname="hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500_config.json",
+            sha256="31e65ef5e100cb43de08f2c8d225496ace1ed87a49fcb8ee44bd6805f079b1f0",
+        ),
+        Checkpoint(
+            name="hubert-base-ls960-layer-9-kmeans-500-hifigan-speakers",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500/speakers.txt",
+            fname="hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500_speakers.txt",
+            sha256="2efabb7a4ad786da34fe6fbe99c3906b7abd40b2e01c81b7efde76142ae3d552",
+        ),
+        Checkpoint(
+            name="hubert-base-ls960-layer-9-kmeans-500-hifigan-styles",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500/styles.txt",
+            fname="hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km500_styles.txt",
+            sha256="a6f63206518448277c63c3a251ac13484784829cf2e1b0a23b0860dd32543520",
+        ),
+        # hubert_base_km2000_L9_expresso
+        Checkpoint(
+            name="hubert-base-ls960-layer-9-kmeans-expresso-2000-hifigan",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso/generator.pt",
+            fname="hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso_generator.pt",
+            sha256="b892fdcca889f4bc6d7f0a0f407ae5d01eca8aaa66b9be333ef33a1c50f2ef52",
+        ),
+        Checkpoint(
+            name="hubert-base-ls960-layer-9-kmeans-expresso-2000-hifigan-config",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso/config.json",
+            fname="hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso_config.json",
+            sha256="73932563cedc43cd1dcddfab36ce3b2c3cb76eef3423d25d1fb536ce1ec513bb",
+        ),
+        Checkpoint(
+            name="hubert-base-ls960-layer-9-kmeans-expresso-2000-hifigan-speakers",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso/speakers.txt",
+            fname="hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso_speakers.txt",
+            sha256="2efabb7a4ad786da34fe6fbe99c3906b7abd40b2e01c81b7efde76142ae3d552",
+        ),
+        Checkpoint(
+            name="hubert-base-ls960-layer-9-kmeans-expresso-2000-hifigan-styles",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso/styles.txt",
+            fname="hifigan_expresso_lj_vctk_hubert_base_ls960_L9_km2000_expresso_styles.txt",
+            sha256="a6f63206518448277c63c3a251ac13484784829cf2e1b0a23b0860dd32543520",
+        ),
+        # mhubert_base_vp_mls_cv_8lang_it3_L12_km2000
+        Checkpoint(
+            name="mhubert-base-vp_mls_cv_8lang-kmeans-2000-hifigan",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000/generator.pt",
+            fname="hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_generator.pt",
+            sha256="0d160c97519d3ed644e2ec636581b79e56767d60325308849fbb389a494c1466",
+        ),
+        Checkpoint(
+            name="mhubert-base-vp_mls_cv_8lang-kmeans-2000-hifigan-config",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000/config.json",
+            fname="hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_config.json",
+            sha256="73932563cedc43cd1dcddfab36ce3b2c3cb76eef3423d25d1fb536ce1ec513bb",
+        ),
+        Checkpoint(
+            name="mhubert-base-vp_mls_cv_8lang-kmeans-2000-hifigan-speakers",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000/speakers.txt",
+            fname="hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_speakers.txt",
+            sha256="2efabb7a4ad786da34fe6fbe99c3906b7abd40b2e01c81b7efde76142ae3d552",
+        ),
+        Checkpoint(
+            name="mhubert-base-vp_mls_cv_8lang-kmeans-2000-hifigan-styles",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000/styles.txt",
+            fname="hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_styles.txt",
+            sha256="a6f63206518448277c63c3a251ac13484784829cf2e1b0a23b0860dd32543520",
+        ),
+        # mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso
+        Checkpoint(
+            name="mhubert-base-vp_mls_cv_8lang-kmeans-expresso-2000-hifigan",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/generator.pt",
+            fname="hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso_generator.pt",
+            sha256="8d1585f20edd9b0982f80acbb387a892adf19e4aa719b8dea795c8fa96285cbc",
+        ),
+        Checkpoint(
+            name="mhubert-base-vp_mls_cv_8lang-kmeans-expresso-2000-hifigan-config",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/config.json",
+            fname="hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso_config.json",
+            sha256="73932563cedc43cd1dcddfab36ce3b2c3cb76eef3423d25d1fb536ce1ec513bb",
+        ),
+        Checkpoint(
+            name="mhubert-base-vp_mls_cv_8lang-kmeans-expresso-2000-hifigan-speakers",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/speakers.txt",
+            fname="hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso_speakers.txt",
+            sha256="2efabb7a4ad786da34fe6fbe99c3906b7abd40b2e01c81b7efde76142ae3d552",
+        ),
+        Checkpoint(
+            name="mhubert-base-vp_mls_cv_8lang-kmeans-expresso-2000-hifigan-styles",
+            remote_path="https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/styles.txt",
+            fname="hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso_styles.txt",
+            sha256="a6f63206518448277c63c3a251ac13484784829cf2e1b0a23b0860dd32543520",
         ),
     ]
 
