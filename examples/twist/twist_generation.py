@@ -13,7 +13,6 @@ def run_full_generation(hubert_encoder, twist_model, hifi_vocoder, speech_prompt
     return full_generation
 
 
-
 def main(args):
     audio, sample_rate = torchaudio.load(args.input_file)
 

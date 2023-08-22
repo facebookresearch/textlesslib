@@ -47,10 +47,3 @@ def generate_with_offset(lm_model, input_ids, offset=None):
     input_ids = input_ids.to(lm_model.device)
     generated_ids = lm_model.generate(offset + input_ids, max_length=3 * input_len, do_sample=True, temperature=0.8)
     return generated_ids - offset
-
-if __name__ == "__main__":
-    lm_model = build_speech_lm("TWIST-350M")
-    input_ids = torch.randint(0, 500, (1, 15, ))
-    generated_ids = generate_with_offset(lm_model, input_ids)
-    print(input_ids)
-    print(generated_ids)
