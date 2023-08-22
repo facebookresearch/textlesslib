@@ -14,8 +14,6 @@ def run_full_generation(hubert_encoder, twist_model, hifi_vocoder, speech_prompt
 
 
 def main(args):
-    audio, sample_rate = torchaudio.load(args.input_file)
-
     dense_model, quantizer_model, vocab = "mhubert-base-25hz", "kmeans", 500
 
     # Load speech encoder and vocoder
@@ -42,6 +40,7 @@ def main(args):
     # Load twist model
     twist_model = build_speech_lm(args.twist_model_name)
     
+    audio, sample_rate = torchaudio.load(args.input_file)
     if audio.ndim == 2:
         audio = audio.mean(0)
 
