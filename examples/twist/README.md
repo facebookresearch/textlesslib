@@ -17,7 +17,7 @@ First, follow the commands below to configure the enviroment:
 git clone git@github.com:facebookresearch/textlesslib.git
 cd textlesslib
 pip install -e .
-pip install git+git://github.com:pytorch/fairseq.git
+pip install git+https://github.com/pytorch/fairseq
 pip install transformers wget
 cd examples/twist
 ```

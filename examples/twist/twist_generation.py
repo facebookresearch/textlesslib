@@ -82,7 +82,7 @@ def cli_main():
     parser.add_argument(
         "--prompt_duration_sec",
         type=float,
-        default=None,
+        default=3.0,
         help="Cutting prompts to a maximum duration",
     )
 

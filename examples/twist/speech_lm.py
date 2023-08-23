@@ -43,7 +43,8 @@ def build_speech_lm(name):
 def generate_with_offset(lm_model, input_ids, offset=None):
     if offset is None:
         offset = lm_model.config.offset
-    input_len = int(input_ids.shape[-1])
+    input_len= int(input_ids.shape[-1])
+    generation_len = int(min(250, 3 * input_len))
     input_ids = input_ids.to(lm_model.device)
-    generated_ids = lm_model.generate(offset + input_ids, max_length=3 * input_len, do_sample=True, temperature=0.8)
+    generated_ids = lm_model.generate(offset + input_ids, max_length=generation_len, do_sample=True, temperature=0.8)
     return generated_ids - offset
