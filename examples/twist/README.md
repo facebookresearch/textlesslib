@@ -14,7 +14,7 @@ Speech language models (SpeechLMs) process and generate acoustic data only, with
 
 First, follow the commands below to configure the enviroment:
 ```bash
-git clone git@github.com:facebookresearch/textlesslib.git
+git clone https://github.com/facebookresearch/textlesslib.git
 cd textlesslib
 pip install -e .
 pip install git+https://github.com/pytorch/fairseq
@@ -30,7 +30,10 @@ This will generate a continuation for the given speech prompt.
 
 This command will download (once) the relevant HuBERT speech encoder (including its quantizer), a HiFi speech vocoder, and the required pretrained SpeechLM. 
 
-The pretrained SpeechLMs available are: TWIST-350M, TWIST-1.3B and TWIST-7B
+The pretrained SpeechLMs available are: TWIST-350M, TWIST-1.3B and TWIST-7B.
+
+
+For more information and code examples about the resythesis pipeline see the relevant part in the [Expresso README](https://github.com/facebookresearch/textlesslib/blob/main/examples/expresso/README.md#2-the-baseline-resythesis-model).
 
 ## Citation:
 ```
