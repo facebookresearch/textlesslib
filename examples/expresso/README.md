@@ -20,6 +20,9 @@ We share pre-trained hifigan vocoders using HuBERT units on Expresso, LJ and VCT
 |[HuBERT Mix1 (VP, MLS, CV)](https://dl.fbaipublicfiles.com/hubert/mhubert_base_vp_mls_cv_8lang_it3.pt)|[L12 km2000 (Expresso)](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso.bin)|Expresso + LJ + VCTK|[generator.pt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/generator.pt) - [config.json](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/config.json) - [speakers.txt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/speakers.txt) - [styles.txt](https://dl.fbaipublicfiles.com/textless_nlp/expresso/checkpoints/hifigan_expresso_lj_vctk_mhubert_base_vp_mls_cv_8lang_it3_L12_km2000_expresso/styles.txt)|
 
 The resynthesis can be obtained from `textlesslib` as follows:
+
+Please note that you'll need a reasonably recent version of fairseq (i.e. [fairseq/tree/4db264940f](https://github.com/facebookresearch/fairseq/tree/4db264940f281a6f47558d17387b1455d4abd8d9)) in order to load HuBERT Mix1 checkpoint.
+
 ```python
 import torchaudio
 from textless.data.speech_encoder import SpeechEncoder
@@ -69,7 +72,6 @@ audio = vocoder(
     style_id=styles.index('read-default'),
 ) # torch.Tensor([-9.9573e-04, -1.7003e-04, -6.8756e-05,...])
 ```
-Please note that you'll need a reasonably recent version of fairseq (i.e. [fairseq/tree/100cd91db1](https://github.com/facebookresearch/fairseq/tree/100cd91db19bb27277a06a25eb4154c805b10189)) in order to load HuBERT Mix1 checkpoint.
 
 ### 2.2 Train the hifigan model
 You can use the [speech-resynthesis](https://github.com/facebookresearch/speech-resynthesis) library to train a speaker- and style-conditioned hifigan model, more information can be found in this [repo](https://github.com/facebookresearch/speech-resynthesis/tree/main/examples/expresso).
@@ -127,7 +129,7 @@ python examples/speech_recognition/infer.py \
     --gen-subset ${SUBSET_NAME} \
     --results-path ${OUTPUT_DIR} \
 ```
-Please note that you'll need a reasonably recent version of fairseq (i.e. [fairseq/tree/100cd91db1](https://github.com/facebookresearch/fairseq/tree/100cd91db19bb27277a06a25eb4154c805b10189)) in order to run the ASR script. You'll also need to install flashlight python bindings, follow the instructions on [this page](https://github.com/flashlight/flashlight/tree/e16682fa32df30cbf675c8fe010f929c61e3b833/bindings/python) to install. Flashlight v0.3.2 must be used to install the bindings:
+Please note that you'll need a reasonably recent version of fairseq (i.e. [fairseq/tree/4db264940f](https://github.com/facebookresearch/fairseq/tree/4db264940f281a6f47558d17387b1455d4abd8d9)) in order to run the ASR script. You'll also need to install flashlight python bindings, follow the instructions on [this page](https://github.com/flashlight/flashlight/tree/e16682fa32df30cbf675c8fe010f929c61e3b833/bindings/python) to install. Flashlight v0.3.2 must be used to install the bindings:
 ```
 git clone --branch v0.3.2 https://github.com/flashlight/flashlight
 ```
