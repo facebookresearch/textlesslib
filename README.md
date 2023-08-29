@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Textless NLP is an active area of research that aims to extend NLP techniques (and tools!) to work directly on spoken language. By using self-supervisedly
-learnt discrete speech representations, the area promises to unlock interesting NLP applications on languages without written form or on facets of spoken 
+learnt discrete speech representations, the area promises to unlock interesting NLP applications on languages without written form or on facets of spoken
 language that are unaccessable for text-based approaches, e.g. prosody. To learn more, please check some of the [papers](https://speechbot.github.io/).
 
 **textlesslib** is a library aimed to facilitate research in Textless NLP. The goal of the library is to speed up the research cycle and
@@ -35,13 +35,15 @@ pip install git+git://github.com:pytorch/fairseq.git@dd106d9534b22e7db859a6b87ff
 
 ## Usage examples
 We include a set of examples in the [examples](./examples) folder:
-*  [Discrete speech resynthesis (& compression)](./examples/resynthesis/) 
+*  [Discrete speech resynthesis (& compression)](./examples/resynthesis/)
 *  [Probing for speaker information in the representations](./examples/speaker_probing/)
 *  [Generative Spoken Language Modeling (aka Speech Continuation)](./examples/gslm/)
+*  [The Expresso Dataset & Expressive Discrete Resynthesis](./examples/expresso/)
+*  [Textually Pretrained Speech Language Models(TWIST)](./examples/twist/)
 
 There is also a [[Jupyter notebook]](./examples/resynthesis_and_continuation.ipynb) and a [[Google Colab]](https://colab.research.google.com/github/facebookresearch/textlesslib/blob/main/examples/resynthesis_and_continuation.ipynb) that combine discrete resynthesis and speech continuation examples in a step-by-step mini-tutorial.
 
-We believe those examples can serve both as illustrations for the provided components and provide 
+We believe those examples can serve both as illustrations for the provided components and provide
 a starting point for tinkering in interesting directions.
 
 ### Encoding speech
@@ -140,7 +142,7 @@ cd tests && pytest -n 8
 If you find textless-lib useful in your research, please consider citing our work:
 ```
 @article{Kharitonov2022,
-      title={textless-lib: a Library for Textless Spoken Language Processing}, 
+      title={textless-lib: a Library for Textless Spoken Language Processing},
       author={Eugene Kharitonov and Jade Copet and Kushal Lakhotia and Tu Anh Nguyen and Paden Tomasello and Ann Lee and Ali Elkahky and Wei-Ning Hsu and Abdelrahman Mohamed and Emmanuel Dupoux and Yossi Adi},
       year={2022},
       eprint={2202.07359},
@@ -151,7 +153,7 @@ If you find textless-lib useful in your research, please consider citing our wor
 
 ## Licence
 textlesslib is licensed under MIT, the text of the license can be found [here](LICENSE).
-Internally, it uses 
+Internally, it uses
 * [WaveGlow](https://github.com/NVIDIA/waveglow) - licensed under BSD-3-Clause license;
 * [tacotron implementation](https://github.com/keithito/tacotron) - licensed under MIT license;
 * [tacotron2 implementation](https://github.com/NVIDIA/tacotron2) - licensed under BSD-3-Clause license;

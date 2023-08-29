@@ -28,9 +28,10 @@ QUANTIZER_MODELS = {
 # TODO: add kwargs everywhere
 def dispatch_dense_model(name: str, **kwargs):
     model_class, model_basename, model_layer, *model_kwargs = DENSE_MODELS[name]
+    # Add other model arguments to kwargs (i.e. {'feat_hop_size': 640})
     for mkwargs in model_kwargs:
         for k, v in mkwargs.items():
-            # don't overwrite kwargs
+            # don't overwrite keys in kwargs
             if k not in kwargs:
                 kwargs[k] = v
     checkpoint_path = CHECKPOINT_MANAGER.get_by_name(model_basename)

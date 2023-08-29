@@ -4,7 +4,7 @@ We share the processing scripts for the Expresso dataset used in the paper: "EXP
 We prepare the Expresso dataset for speech synthesis experiments by cutting down to short segments of less than 15 seconds based on VAD information obtained from [pyannote-audio](https://github.com/pyannote/pyannote-audio).
 
 ## Expresso data splits
-The exprresso data splits (train/dev/test) are shared in the [expresso_splits](expresso_splits) directory.
+The Expresso data splits (train/dev/test) are shared in the [expresso_splits](expresso_splits) directory.
 
 ## VAD segments
 The VAD segments of long speech (longform read speech and conversational speech) can be found in the [expresso_VAD_segments.txt](expresso_VAD_segments.txt) file.
