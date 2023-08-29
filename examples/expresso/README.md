@@ -80,7 +80,7 @@ You can use the [speech-resynthesis](https://github.com/facebookresearch/speech-
 We transcibre the synthesized speech using a pre-trained Automatic Speech Recognition (ASR) model ([wav2vec2]((https://github.com/facebookresearch/fairseq/tree/main/examples/wav2vec)) pre-trained on Librilight60kh fine-tuned on Librispeech960h, get `wav2vec_vox_960h_pl.pt` checkpoint [here](https://dl.fbaipublicfiles.com/fairseq/wav2vec/wav2vec_vox_960h_pl.pt)) and compute the Word Error Rate (WER) between the transcribed text and the true transcription.
 
 #### 3.1.1 Prepare ASR dataset
-You'll need to preprare a manifest file along with a transcription to perform the ASR.
+You'll need to prepare a manifest file along with a transcription to perform the ASR.
 
 The manifest file can be obtain with wav2vec's manifest script [here](https://github.com/facebookresearch/fairseq/blob/main/examples/wav2vec/wav2vec_manifest.py), and the transcription is expected to be in letter format.
 

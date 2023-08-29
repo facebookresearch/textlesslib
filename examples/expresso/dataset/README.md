@@ -7,7 +7,7 @@ The Expresso dataset is a high-quality (48kHz) expressive speech dataset that in
 You can listen to samples from the Expresso Dataset at [this website](https://speechbot.github.io/expresso/).
 
 ## Data Statistics
-Here is the statistics of Expresso’s expressive styles:
+Here are the statistics of Expresso’s expressive styles:
 
 ----------------------------------------------------------------
  Style            | Read (min) | Improvised (min) | total (hrs)

@@ -198,20 +198,29 @@ def reduce_operations(operations, sort=True):
 
         operations = sorted(operations, key=get_key)
 
-    src_root_dir = "/".join(
-        os.path.commonprefix([line.split()[1] for line in operations]).split("/")[:-1]
+    # Get common root directories
+    src_root_dir = os.path.dirname(
+        os.path.commonprefix([line.split()[1] for line in operations])
     )
-    tgt_root_dir = "/".join(
-        os.path.commonprefix([line.split()[-1] for line in operations]).split("/")[:-1]
+    tgt_root_dir = os.path.dirname(
+        os.path.commonprefix([line.split()[-1] for line in operations])
     )
+
     reduced_operations = []
     reduced_operations.append(f"src_root_dir: {src_root_dir}")
     reduced_operations.append(f"tgt_root_dir: {tgt_root_dir}")
     for line in operations:
-        reduced_line = line.replace(f"\t{src_root_dir}/", "\t").replace(
-            f" {tgt_root_dir}/", " "
-        )
+        # Get operation & operation content
+        op, op_content = line.split('\t')
+        src_path, *items, tgt_path = op_content.split()
+        # Reduce src_path and tgt_path with common root directories
+        src_path = os.path.relpath(src_path, src_root_dir)
+        tgt_path = os.path.relpath(tgt_path, tgt_root_dir)
+        # Write the reduced operation content
+        op_content = " ".join([src_path, *items, tgt_path])
+        reduced_line = f"{op}\t{op_content}"
         reduced_operations.append(reduced_line)
+
     return reduced_operations
 
 
