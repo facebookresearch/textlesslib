@@ -67,6 +67,8 @@ class HubertFeatureReader(torch.nn.Module):
         feat = []
         for start in range(0, x.size(1), self.max_chunk):
             x_chunk = x[:, start : start + self.max_chunk]
+            if x_chunk.size(1) < 10:
+                continue
             feat_chunk, _ = self.model.extract_features(
                 source=x_chunk,
                 padding_mask=None,
